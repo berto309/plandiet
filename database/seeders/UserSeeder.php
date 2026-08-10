@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $fake = Factory::create();
 
         DB::table('users')->insert([
             [
@@ -24,7 +23,7 @@ class UserSeeder extends Seeder
                 'email'             => 'admin@plandiet.com',
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::SUPER_ADMIN,
-                'phone'             => $fake->phoneNumber,
+                'phone'             => '07325658874',
                 'date_of_birth'     => fake()->date(),
                 'status'            => 'active',
                 'gender'            =>  GenderEnum::MALE->value,

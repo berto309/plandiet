@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +16,7 @@ class ClientSeeder extends Seeder
 {
     public function run(): void
     {
-        $fake = Factory::create();
+
 
         $sarah = User::where('email', 'sarah@plandiet.com')->first();
         $amir  = User::where('email', 'amir@plandiet.com')->first();
@@ -33,7 +32,7 @@ class ClientSeeder extends Seeder
                 'user' => [
                     'name'              => 'Fatima Al-Hassan',
                     'email'             => 'fatima@plandiet.com',
-                    'phone'             => $fake->phoneNumber(),
+                    'phone'             => '07225658874',
                     'password'          => Hash::make('123456'),
                     'role'              => $clientRole,
                     'status'            => $userActiveStatus,
@@ -66,7 +65,7 @@ class ClientSeeder extends Seeder
                 'user' => [
                     'name'              => 'Marcus Brown',
                     'email'             => 'marcus@plandiet.com',
-                    'phone'             => $fake->phoneNumber(),
+                    'phone'             => '07325658844',
                     'password'          => Hash::make('123456'),
                     'role'              => $clientRole ,
                     'status'            => $userActiveStatus,
@@ -99,7 +98,7 @@ class ClientSeeder extends Seeder
                 'user' => [
                     'name'              => 'Lin Wei',
                     'email'             => 'lin@plandiet.com',
-                    'phone'             => $fake->phoneNumber(),
+                    'phone'             => '07366658874',
                     'password'          => Hash::make('123456'),
                     'role'              => $clientRole ,
                     'status'            => $userActiveStatus,

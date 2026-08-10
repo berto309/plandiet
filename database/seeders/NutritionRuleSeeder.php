@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Plandiet\App\Tools\RuleEditor\Enums\NutritionRuleConstraintTypeEnum;
 use Plandiet\App\Tools\RuleEditor\Enums\NutritionRulePriorityEnum;

@@ -15,12 +15,8 @@ export default function MarketingModal({initialTab, onClose}: MarketingModalProp
 
 
     const signInForm = useForm({
-        // email: 'admin@plandiet.com',
-        // password: '123456',
-        // email: 'sarah@plandiet.com',
-        // password: '123456',
-        email: 'fatima@plandiet.com',
-        password: '123456',
+        email: '',
+        password: '',
         remember: false
     })
 

@@ -13,13 +13,14 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
     const {app} = usePage().props
     const {url} = usePage()
 
+
     const NAV_LINKS = [
-        { href: "/#problem", label: `Why ${app.name}` },
-        { href: "/#features", label: "Features" },
-        { href: "/#how-it-works", label: "How it works" },
-        { href: "/#for-practitioners", label: "For practitioners" },
-        { href: "/#technology", label: "Technology" },
-        { href: "/#faq", label: "FAQ" },
+        { href: "#problem", label: `Why ${app.name}` },
+        { href: "#features", label: "Features" },
+        { href: "#how-it-works", label: "How it works" },
+        { href: "#for-practitioners", label: "For practitioners" },
+        { href: "#technology", label: "Technology" },
+        { href: "#faq", label: "FAQ" },
     ];
 
     useEffect(() => {
@@ -116,13 +117,13 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
                                 href={l.href}
                                 onClick={(e) => handleNavClick(e, l.href)}
                                 className={`block py-2.5 text-sm font-medium ${url.startsWith('/register') ? 'hidden' : ''}`}
-                                style={{ color: "var(--muted)" }}
+                                style={{ color: "var(--muted)", padding: "5px" }}
 
                             >
                                 {l.label}
                             </a>
                         ))}
-                        <div className="pt-3 border-t flex flex-col gap-2" style={{ borderColor: "rgba(31,94,31,.1)" }}>
+                        <div className="pt-3 border-t flex flex-col gap-2" style={{ borderColor: "rgba(31,94,31,.1)", marginTop: "5px", padding: "5px" }}>
                             <button
                                 onClick={() => {
                                     onAuth("signin");

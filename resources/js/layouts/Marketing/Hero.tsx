@@ -18,12 +18,12 @@ export default function Hero({onAuth}: HeroProp) {
 
             <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
                 {/* Eyebrow */}
-                <div className="sr" data-delay="1" style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-          <span className="pill">
-            <span className="pulse" style={{ width: 6, height: 6, borderRadius: "50%", background: C.forest, display: "inline-block" }} />
-            Neurosymbolic AI · Clinically Governed · HCPC Verified
-          </span>
-                </div>
+          {/*      <div className="sr" data-delay="1" style={{ textAlign: "center", marginBottom: "1.5rem" }}>*/}
+          {/*<span className="pill">*/}
+          {/*  <span className="pulse" style={{ width: 6, height: 6, borderRadius: "50%", background: C.forest, display: "inline-block" }} />*/}
+          {/*  Neurosymbolic AI · Clinically Governed · HCPC Verified*/}
+          {/*</span>*/}
+          {/*      </div>*/}
 
                 {/* Headline */}
                 <div className="sr" data-delay="2" style={{ textAlign: "center", maxWidth: 900, margin: "0 auto" }}>
@@ -47,9 +47,9 @@ export default function Hero({onAuth}: HeroProp) {
                 <div className="sr" data-delay="5" style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", justifyContent: "center", marginBottom: "4rem" }}>
                     {[
                         ["HCPC verified practitioners"],
-                        ["UK GDPR compliant"],
+                        // ["UK GDPR compliant"],
                         ["Zero hard-rule violations"],
-                        ["Full audit trail"],
+                        // ["Full audit trail"],
                     ].map(([label]) => (
                         <div key={label} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: ".75rem", fontWeight: 500, color: C.muted }}>
                             <span style={{ color: C.forestLight }}>✓</span>{label}

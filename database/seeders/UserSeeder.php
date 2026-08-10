@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,13 +16,15 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $fake = Factory::create();
+
         DB::table('users')->insert([
             [
                 'name'              => 'Platform Admin',
                 'email'             => 'admin@plandiet.com',
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::SUPER_ADMIN,
-                'phone'             => fake()->phoneNumber(),
+                'phone'             => $fake->phoneNumber,
                 'date_of_birth'     => fake()->date(),
                 'status'            => 'active',
                 'gender'            =>  GenderEnum::MALE->value,

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -15,6 +16,8 @@ class RuleTemplateSeeder extends Seeder
      */
     public function run(): void
     {
+        $fake = Factory::create();
+
         $name1 = 'Diabetes: carb limit per meal';
         $name2 = 'Diabetes: low glycaemic index preference';
         $name3 = 'Diabetes + weight loss: tighter carb limit';
@@ -39,7 +42,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name1),
                 'condition_tag'      => 'diabetes_t2',
                 'nutrient'           => 'carbs_g',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 45,
                 'unit'               => 'g',
@@ -54,7 +57,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name2),
                 'condition_tag'      => 'diabetes_t2_weight_loss',
                 'nutrient'           => 'carbs_g',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 40,
                 'unit'               => 'g',
@@ -69,7 +72,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name3),
                 'condition_tag'      => 'diabetes_t2',
                 'nutrient'           => 'glycaemic_index',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 55,
                 'unit'               => 'GI',
@@ -86,7 +89,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name4),
                 'condition_tag'      => 'hypertension',
                 'nutrient'           => 'sodium_mg',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 600,
                 'unit'               => 'mg',
@@ -101,7 +104,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name5),
                 'condition_tag'      => 'hypertension',
                 'nutrient'           => 'sodium_mg_daily',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 1500,
                 'unit'               => 'mg',
@@ -116,7 +119,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name6),
                 'condition_tag'      => 'hypertension',
                 'nutrient'           => 'potassium_mg',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => 'gte',
                 'default_value'      => 3500,
                 'unit'               => 'mg',
@@ -133,7 +136,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name7),
                 'condition_tag'      => 'hypercholesterolaemia',
                 'nutrient'           => 'sat_fat_g',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 15,
                 'unit'               => 'g',
@@ -148,7 +151,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name8),
                 'condition_tag'      => 'hypercholesterolaemia',
                 'nutrient'           => 'fibre_g',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => 'gte',
                 'default_value'      => 30,
                 'unit'               => 'g',
@@ -165,7 +168,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name9),
                 'condition_tag'      => 'allergy_nuts',
                 'nutrient'           => 'tree_nuts',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => 'exclude',
                 'default_value'      => null,
                 'unit'               => null,
@@ -180,7 +183,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name10),
                 'condition_tag'      => 'allergy_peanuts',
                 'nutrient'           => 'peanuts',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => 'exclude',
                 'default_value'      => null,
                 'unit'               => null,
@@ -197,7 +200,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name11),
                 'condition_tag'      => 'ibs',
                 'nutrient'           => 'fodmap_level',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 2,
                 'unit'               => 'g',
@@ -214,7 +217,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => Str::slug($name12),
                 'condition_tag'      => 'ckd',
                 'nutrient'           => 'phosphorus_mg',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 800,
                 'unit'               => 'mg',
@@ -229,7 +232,7 @@ class RuleTemplateSeeder extends Seeder
                 'slug'               => str::slug($name13),
                 'condition_tag'      => 'ckd',
                 'nutrient'           => 'protein_g',
-                'is_active'           => fake()->boolean(),
+                'is_active'           => $fake->boolean(),
                 'operator'           => $lte,
                 'default_value'      => 50,
                 'unit'               => 'g',

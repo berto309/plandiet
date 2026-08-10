@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Plandiet\App\Tools\RuleEditor\Enums\NutritionRuleConstraintTypeEnum;
 use Plandiet\App\Tools\RuleEditor\Enums\NutritionRulePriorityEnum;
@@ -57,8 +58,7 @@ class NutritionRuleSeeder extends Seeder
         // ── Marcus's rules (hypertension + high cholesterol, set by Sarah) ──
         $this->createFromTemplate('Hypertension: sodium limit per meal', $marcus, $sarah, [
             'value'             => 550, // Sarah tightened from 600
-            '
-            practitioner_note' => 'Marcus on ramipril — keeping sodium lower than default template.',
+            'practitioner_note' => 'Marcus on ramipril — keeping sodium lower than default template.',
         ]);
 
         $this->createFromTemplate('Hypertension: daily sodium ceiling', $marcus, $sarah);

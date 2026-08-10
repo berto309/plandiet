@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -18,6 +19,8 @@ class PractitionerSeeder extends Seeder
 {
     public function run(): void
     {
+        $fake = Factory::create();
+
         $regDietician = ProfessionalTitleEnum::REGISTERED_DIETICIAN;
         $regNutrition = ProfessionalTitleEnum::REGISTERED_NUTRITIONIST;
         $admin = User::first();
@@ -26,8 +29,8 @@ class PractitionerSeeder extends Seeder
             [
                 'name'              => 'Sarah Okonkwo',
                 'email'             => 'sarah@plandiet.com',
-                'phone'             => fake()->phoneNumber(),
-                'date_of_birth'     => fake()->date(),
+                'phone'             => $fake->phoneNumber(),
+                'date_of_birth'     => $fake->date(),
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::PRACTITIONER->value,
                 'status'            => UserStatusEnum::ACTIVE->value,
@@ -37,8 +40,8 @@ class PractitionerSeeder extends Seeder
             [
                 'name'              => 'Dr. Amir Hassan',
                 'email'             => 'amir@plandiet.com',
-                'phone'             => fake()->phoneNumber(),
-                'date_of_birth'     => fake()->date(),
+                'phone'             => $fake->phoneNumber(),
+                'date_of_birth'     => $fake->date(),
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::PRACTITIONER->value,
                 'status'            => UserStatusEnum::ACTIVE->value,
@@ -48,8 +51,8 @@ class PractitionerSeeder extends Seeder
             [
                 'name'              => 'Emma Clarke',
                 'email'             => 'emma@plandiet.com',
-                'phone'             => fake()->phoneNumber(),
-                'date_of_birth'     => fake()->date(),
+                'phone'             => $fake->phoneNumber(),
+                'date_of_birth'     => $fake->date(),
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::PRACTITIONER->value,
                 'status'            => UserStatusEnum::ACTIVE->value,
@@ -63,8 +66,8 @@ class PractitionerSeeder extends Seeder
                 'user' => [
                     'name'              => 'Sarah Okonkwo',
                     'email'             => 'sarah@plandiet.com',
-                    'phone'             => fake()->phoneNumber(),
-                    'date_of_birth'     => fake()->date(),
+                    'phone'             => $fake->phoneNumber(),
+                    'date_of_birth'     => $fake->date(),
                     'password'          => Hash::make('123456'),
                     'role'              => UserRoleEnum::PRACTITIONER->value,
                     'status'            => UserStatusEnum::ACTIVE->value,
@@ -93,8 +96,8 @@ class PractitionerSeeder extends Seeder
                 'user' => [
                     'name'              => 'Dr. Amir Hassan',
                     'email'             => 'amir@plandiet.com',
-                    'phone'             => fake()->phoneNumber(),
-                    'date_of_birth'     => fake()->date(),
+                    'phone'             => $fake->phoneNumber(),
+                    'date_of_birth'     => $fake->date(),
                     'password'          => Hash::make('123456'),
                     'role'              => UserRoleEnum::PRACTITIONER->value,
                     'status'            => UserStatusEnum::ACTIVE->value,
@@ -121,8 +124,8 @@ class PractitionerSeeder extends Seeder
                 'user' => [
                     'name'              => 'Emma Clarke',
                     'email'             => 'emma@plandiet.com',
-                    'phone'             => fake()->phoneNumber(),
-                    'date_of_birth'     => fake()->date(),
+                    'phone'             => $fake->phoneNumber(),
+                    'date_of_birth'     => $fake->date(),
                     'password'          => Hash::make('123456'),
                     'role'              => UserRoleEnum::PRACTITIONER->value,
                     'status'            => UserStatusEnum::ACTIVE->value,

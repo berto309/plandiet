@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::SUPER_ADMIN,
                 'phone'             => '07325658874',
-                'date_of_birth'     =>  array_rand(['07325654123', '07005658874']),
+                'date_of_birth'     =>  now()->subYears(30),
                 'status'            => 'active',
                 'gender'            =>  GenderEnum::MALE->value,
                 'email_verified_at' => now(),

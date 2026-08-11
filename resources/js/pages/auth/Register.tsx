@@ -210,9 +210,9 @@ export default function Register() {
         <div className="mealai-root">
 
             <MarketingNavbar onAuth={(tab) => setAuthModal(tab)}/>
-            <style>
-                {`*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }`}
-            </style>
+            {/*<style>*/}
+            {/*    {`*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }`}*/}
+            {/*</style>*/}
 
             {
                 submitted ?  (

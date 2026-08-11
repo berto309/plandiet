@@ -122,26 +122,30 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
                                 {l.label}
                             </a>
                         ))}
-                        <div className="pt-3 border-t flex flex-col gap-2" style={{ borderColor: "rgba(31,94,31,.1)", marginTop: "5px", padding: "5px" }}>
-                            <button
-                                onClick={() => {
-                                    onAuth("signin");
-                                    setMobileOpen(false);
-                                }}
-                                className="btn-shimmer" style={{ color: "white", fontWeight: 500, fontSize: ".875rem", padding: "1rem 2rem", borderRadius: 999, boxShadow: "0 4px 16px rgba(31,94,31,.3)" }}
-                            >
-                                Sign in
-                            </button>
-                            <button
-                                onClick={() => {
-                                    onAuth("signup");
-                                    setMobileOpen(false);
-                                }}
-                                className="btn-shimmer" style={{ color: "white", fontWeight: 500, fontSize: ".875rem", padding: "1rem 2rem", borderRadius: 999, boxShadow: "0 4px 16px rgba(31,94,31,.3)" }}
-                            >
-                                Get started free
-                            </button>
-                        </div>
+                        {!url.startsWith('/') && (
+                            <div className="pt-3 border-t flex flex-col gap-2" style={{ borderColor: "rgba(31,94,31,.1)", marginTop: "5px", padding: "5px" }}>
+                                <button
+                                    onClick={() => {
+                                        onAuth("signin");
+                                        setMobileOpen(false);
+                                    }}
+                                    className="btn-shimmer" style={{ color: "white", fontWeight: 500, fontSize: ".875rem", padding: "1rem 2rem", borderRadius: 999, boxShadow: "0 4px 16px rgba(31,94,31,.3)" }}
+                                >
+                                    Sign in
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        onAuth("signup");
+                                        setMobileOpen(false);
+                                    }}
+                                    className="btn-shimmer" style={{ color: "white", fontWeight: 500, fontSize: ".875rem", padding: "1rem 2rem", borderRadius: 999, boxShadow: "0 4px 16px rgba(31,94,31,.3)" }}
+                                >
+                                    Get started free
+                                </button>
+                            </div>
+                        )}
+
+
                     </div>
                 </div>
             )}

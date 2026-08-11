@@ -41,7 +41,7 @@ export default function ProblemSection() {
                         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                             {[
                                 "Hard constraints enforced by formal logic — never probabilistic",
-                                "Only HCPC/AND-verified practitioners can set clinical rules",
+                                "Only HCPC/AfN-verified practitioners can set clinical rules",
                                 "Weekly compliance data generated automatically — no food diary required",
                                 "Every meal explained in plain English — transparent, auditable AI",
                             ].map((text) => (

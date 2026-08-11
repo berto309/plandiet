@@ -116,7 +116,7 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
                                 key={l.href}
                                 href={l.href}
                                 onClick={(e) => handleNavClick(e, l.href)}
-                                className={`block py-2.5 text-sm font-medium ${url.startsWith('/register') ? 'hidden' : ''}`}
+                                className={`block py-3 text-sm font-medium ${url.startsWith('/register') ? 'hidden' : ''}`}
                                 style={{ color: "var(--muted)", padding: "5px" }}
 
                             >

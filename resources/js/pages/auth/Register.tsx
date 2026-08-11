@@ -210,9 +210,7 @@ export default function Register() {
         <div className="mealai-root">
 
             <MarketingNavbar onAuth={(tab) => setAuthModal(tab)}/>
-            {/*<style>*/}
-            {/*    {`*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }`}*/}
-            {/*</style>*/}
+
 
             {
                 submitted ?  (
@@ -226,7 +224,7 @@ export default function Register() {
                                 Submitted for verification
                             </h1>
                             <p className="text-sm font-light mb-8 text-sage-500">
-                                Thanks, {data.step0.name.split(" ")[0] || "user"}. Our admin team will review your details and documents shortly.
+                                Thanks, {data.step0.name.split(" ")[0] || "user"}. You will receive an email on confirmation of completing your registration as well what to do next. Our admin team will review your details and documents shortly.
                             </p>
 
                             <div className="rounded-2xl p-4 flex gap-4 mb-6 text-left border" style={{ background: "#fffbeb", borderColor: "#fde68a" }}>

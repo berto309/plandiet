@@ -13,7 +13,6 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
     const {app} = usePage().props
     const {url} = usePage()
 
-
     const NAV_LINKS = [
         { href: "#problem", label: `Why ${app.name}` },
         { href: "#features", label: "Features" },
@@ -76,7 +75,7 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
                             key={l.href}
                             href={l.href}
                             onClick={(e) => handleNavClick(e, l.href)}
-                            className={`nav-a text-[.82rem] font-normal transition-colors ${url.startsWith('/register') ? 'hidden' : ''}\``}
+                            className={`nav-a text-[.82rem] font-normal transition-colors ${url.startsWith('/register') ? 'hidden' : ''}`}
                             style={{ color: "var(--muted)" }}
                             onMouseOver={(e) => (e.currentTarget.style.color = "var(--charcoal)")}
                             onMouseOut={(e) => (e.currentTarget.style.color = "var(--muted)")}

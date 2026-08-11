@@ -22,7 +22,6 @@ export default function Welcome() {
     const [authModal, setAuthModal] = useState<string | undefined>(undefined);
     const [showStt, setShowStt] = useState(false);
 
-
     useScrollReveal();
 
     useEffect(() => {

@@ -14,7 +14,7 @@ export default function ProblemSection() {
                     </p>
                 </div>
 
-                <div className="mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div style={{marginBottom: '60px'}} className="mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
                         { icon: "🚨", bg: "#fee2e2", title: "LLMs cannot enforce hard constraints", body: "Prompting an LLM to \"avoid nuts\" or \"keep carbs under 40g\" is a request, not a guarantee. The model may follow it 95% of the time — but for a patient managing anaphylaxis or diabetes, 95% is not sufficient. You need 100%, enforced by formal logic." },
                         { icon: "⚖️", bg: "#fef3c7", title: "No professional accountability structure", body: "Consumer nutrition apps allow any user to input any \"rule.\" There's no verification that the constraint is clinically appropriate, or that the person setting it holds a professional qualification. Clinical decisions need clinical authority behind them." },

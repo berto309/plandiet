@@ -4,7 +4,7 @@ import {C} from "@/support/const";
 const faqs = [
     {
         q: "Can any nutritionist join, or only UK-registered practitioners?",
-        a: "PlanDiet currently supports HCPC, AfN, AND, DAA, Dietitians Canada and CORU."
+        a: "PlanDiet currently supports HCPC and AfN which are regulators based in the UK."
     },
     {
         q: "What happens when rules from multiple conditions conflict?",
@@ -19,11 +19,11 @@ const faqs = [
 export default function FAQ() {
     const FAQS = [
         ["Can any nutritionist join, or only UK-registered practitioners?", "PlanDiet currently supports HCPC (UK dietitians), AfN (UK nutritionists), AND (USA), DAA (Australia), Dietitians Canada, and CORU (Ireland). We verify against each country's professional register. For regions without a formal register, we accept a degree certificate plus employer letter, subject to additional manual review."],
-        ["What happens when rules from multiple conditions conflict?", "The rule engine includes automatic conflict detection. When a practitioner creates or updates a rule, the system checks for contradictions with existing rules and surfaces a warning with a suggested priority resolution. The practitioner makes the final clinical decision — the system never resolves conflicts automatically."],
+        // ["What happens when rules from multiple conditions conflict?", "The rule engine includes automatic conflict detection. When a practitioner creates or updates a rule, the system checks for contradictions with existing rules and surfaces a warning with a suggested priority resolution. The practitioner makes the final clinical decision — the system never resolves conflicts automatically."],
         ["Does the client see the clinical rules governing their meals?", "No. Clients see a simplified summary (e.g. \"carb count\" and \"nut-free\") but not the raw clinical rule logic. This is by design: the rule language is clinical, not consumer-friendly, and showing limits directly could cause anxiety."],
         ["How quickly do rule changes take effect?", "Rule changes are hot-reloaded into the engine within 60 seconds of saving, using a TTL-based rule cache. No redeployment needed. The next time the affected client generates a plan, the updated rules are automatically in effect."],
         ["Is patient data shared with the AI provider?", "The LLM receives only anonymised nutritional parameters — max carbs per meal, target calories, cuisine preferences — never patient names, email addresses, or medical records. All personally identifiable data stays within our database. API calls contain the minimum information necessary for meal generation only."],
-        ["What happens if a practitioner's registration lapses?", "The system polls the HCPC register every 24 hours. If a practitioner's registration status changes to lapsed or suspended, their account is immediately suspended and their clients are notified in-app. Client meal plans continue to work, but no new clinical rules will be applied until the practitioner's account is restored."],
+        // ["What happens if a practitioner's registration lapses?", "The system polls the HCPC register every 24 hours. If a practitioner's registration status changes to lapsed or suspended, their account is immediately suspended and their clients are notified in-app. Client meal plans continue to work, but no new clinical rules will be applied until the practitioner's account is restored."],
     ];
     const [open, setOpen] = useState<undefined | number>(undefined);
 

@@ -46,8 +46,8 @@ export default function Hero({onAuth}: HeroProp) {
                 {/* Trust badges */}
                 <div className="sr" data-delay="5" style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", justifyContent: "center", marginBottom: "4rem" }}>
                     {[
-                        ["HCPC verified practitioners"],
-                        // ["UK GDPR compliant"],
+                        ["HCPC and AfN verified practitioners"],
+                        // ["AfN GDPR compliant"],
                         ["Zero hard-rule violations"],
                         // ["Full audit trail"],
                     ].map(([label]) => (

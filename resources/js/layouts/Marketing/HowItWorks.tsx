@@ -81,7 +81,7 @@ export default function HowItWorks() {
                     </div>
                     <div style={{marginBottom: "32px"}} className="grid md:grid-cols-5 gap-4 items-start mb-8">
                         {[
-                            { icon: "📥", title: "Request received", desc: "Profile + preferences + active rules loaded from database", bg: "rgba(255,255,255,.05)", border: "rgba(255,255,255,.07)", titleColor: "rgba(255,255,255,.75)" },
+                            { icon: "📥", title: "Request received", desc: "Profile + preferences + active rules", bg: "rgba(255,255,255,.05)", border: "rgba(255,255,255,.07)", titleColor: "rgba(255,255,255,.75)" },
                             null,
                             { icon: "🧠", title: "Neural layer", desc: "LLM generates 5 creative candidates per meal slot. Culturally varied, preference-matched. No rules in the prompt.", bg: "rgba(45,122,45,.1)", border: "rgba(134,239,172,.15)", titleColor: "#86efac" },
                             null,

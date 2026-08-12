@@ -64,7 +64,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('nutrition_rule_id')->constrained()->cascadeOnDelete();
             $table->foreignId('changed_by')->constrained('users')->cascadeOnDelete();
-            $table->enum('action', ['created', 'updated', 'activated', 'deactivated', 'deleted']);
+            $table->string('action'); // ['created', 'updated', 'activated', 'deactivated', 'deleted']
             $table->json('previous_state')->nullable();
             $table->json('new_state');
             $table->text('change_reason')->nullable();

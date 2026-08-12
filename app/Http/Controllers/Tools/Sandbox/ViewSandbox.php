@@ -19,7 +19,7 @@ class ViewSandbox extends Controller
             'clientNutritionRulesList' => inertia()->optional(
                 fn(Request $request) => $request->client_id ? NutritionRule::where('client_id', $request->client_id)->get()->toArray() : []
             ),
-            'sandboxTest' => inertia()->optional(fn() => RuleSandboxTest::where('practitioner_id', auth()->id())->latest()->first()),
+            'sandboxTest' => inertia()->optional(fn() => RuleSandboxTest::where('practitioner_id', auth()->id())->orderByDesc('created_at')->first()),
         ]);
     }
 }

@@ -12,7 +12,7 @@ export default function Features() {
                 </div>
             )},
         { icon: "💬", title: "Explainability on Every Meal", body: "Every recommendation includes a plain-English rationale tracing exactly which clinical rules validated it and why it ranked over alternatives.", extra: <div style={{ padding: 12, borderRadius: 12, borderLeft: "2px solid #d4ecd4", background: C.ivoryWarm, fontSize: ".875rem", color: C.muted, fontStyle: "italic" }}>"Chosen because: fits your 40g carb limit (22g used). Nut-free. Halal. High protein (22g) supports your 90g daily target."</div> },
-        { icon: "✅", title: "Practitioner Verification", body: "Three-layer verification: live HCPC register API lookup, document upload review, and manual human review. Approval within 2 business days. 24-hour re-verification polling ongoing.", extra: (
+        { icon: "✅", title: "Practitioner Verification", body: "Three-layer verification: HCPC register lookup, document upload review, and manual human review. Approval within 2-3 business days.", extra: (
                 <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: ".75rem", color: C.muted }}>
                     {["HCPC API → real-time credential lookup with name match","Document review: certificate, insurance, photo ID","Human credentialing review → approval within 48h","Annual re-verification + expiry alerts"].map((s, i) => (
                         <div key={s} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}><span style={{ fontWeight: 600, color: C.forest }}>{i+1}.</span>{s}</div>
@@ -37,7 +37,7 @@ export default function Features() {
                 </div>
             )},
         { icon: "🌍", title: "Cultural Sensitivity", body: "Clients set cuisine preferences. The LLM generates meals that feel familiar and culturally relevant — West African, Mediterranean, South Asian, Middle Eastern — while clinical rules keep them safe.", extra: <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{["🫙 West African","🌿 Mediterranean","🍱 South Asian","🕌 Halal","✡ Kosher","🌱 Vegan"].map(t => <span key={t} className="pill" style={{ fontSize: ".7rem" }}>{t}</span>)}</div> },
-        { icon: "📋", title: "Clinical Template Library", body: "14+ evidence-referenced rule templates covering the most common conditions, each backed by NICE, ADA, NHS, or specialist guidelines.", extra: <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{["T2DM · ADA 2024","Hypertension · NICE NG136","High Cholesterol · BHF","IBS · Monash 2023","CKD · KDIGO 2024"].map(t => <span key={t} className="pill-gold">{t}</span>)}</div> },
+        { icon: "📋", title: "Clinical Template Library", body: "Evidence-referenced rule templates covering the most common conditions, each backed by NHS, or specialist guidelines.", extra: <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>{["T2DM · ADA 2024","Hypertension · NICE NG136","High Cholesterol · BHF","IBS · Monash 2023","CKD · KDIGO 2024"].map(t => <span key={t} className="pill-gold">{t}</span>)}</div> },
         { icon: "🔄", title: "Intelligent Meal Swaps", body: "When a client swaps a meal, the full neurosymbolic pipeline re-runs for just that slot — generating fresh alternatives already pre-validated against all clinical rules. Clients only ever see safe options.", extra: (
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     {[["Lentil soup & wholegrain bread","340mg Na ✓"],["Jerk chicken salad (low-salt)","490mg Na ✓"]].map(([meal,stat]) => (

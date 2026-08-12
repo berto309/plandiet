@@ -331,6 +331,7 @@ export default function Register() {
                                                     Email
                                                 </label>
                                                 <input type="email" value={data.step0.email} onChange={(e) => setData("step0.email", e.target.value)} placeholder="myemail@example.com" className={inputClasses} style={inputColorStyle(!!errors['step0.email'])} required />
+                                                <span style={{"fontSize" : "1rem"}} className="text-amber-600">Please use your professional email (e.g. your nhs email). This is important during verification process.</span>
                                                 <Error message={errors['step0.email']} />
                                             </div>
                                             <div>

@@ -85,7 +85,7 @@ class MealRecommendationService
 
         } catch (PrismException $e) {
             // Prism wraps provider errors (rate limits, auth, timeouts) in PrismException
-            Log::error('Prism API error in MealGenerationService', [
+            Log::error('Prism API error in MealRecommendationService', [
                 'message' => $e->getMessage(),
                 'model'   => $this->model,
                 'client'  => $profile->client_id,
@@ -120,7 +120,7 @@ class MealRecommendationService
         $ruleLines = $rules->map(fn ($r) => sprintf(
             '  - %s %s %s %s [%s · %s]',
             $r->nutrient,
-            strtoupper($r->operator->operatorTranslation()),
+            strtoupper($r->operator->value),
             $r->value ?? 'EXCLUDE',
             $r->unit->value  ?? '',
             strtoupper($r->constraint_type->value),
@@ -290,7 +290,7 @@ PROMPT;
     /**
      * Step 4 — Select the highest-scoring candidate for each meal slot.
      */
-    private function selectBestPerSlot(array $candidates, int $mealsPerDay): array
+    private function selectBestPerSlot(array $candidates, string|int $mealsPerDay): array
     {
         $bySlot   = collect($candidates)->groupBy('meal_type');
         $selected = [];

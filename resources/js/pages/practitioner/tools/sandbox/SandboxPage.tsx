@@ -16,17 +16,18 @@ import {
     isSoft
 } from "@/types/enums";
 import {useToast} from "@/context/ToastContext";
-import ViewSandbox from "@/actions/App/Http/Controllers/Tools/Sandbox/ViewSandbox";
 import PractitionerPortalLayout from "@/layouts/Portals/PractitionerPortalLayout";
 import EmptyState from "@/components/State/EmptyState";
 import RunSandboxController from "@/actions/App/Http/Controllers/Tools/Sandbox/RunSandboxController";
 import {splitRecipeStepsToArray} from "@/lib/utils";
 import ViewSandboxResults from "@/actions/App/Http/Controllers/Tools/Sandbox/ViewSandboxResults";
+import PractitionerDashboardController
+    from "@/actions/App/Http/Controllers/Analytics/Practitioner/PractitionerDashboardController";
 
 const SandboxPage = () => {
 
     const BREADCRUMBS: Crumb[] = [
-        {label: "Dashboard", icon: LayoutDashboard, href: AdminDashboardController.url()},
+        {label: "Dashboard", icon: LayoutDashboard, href: PractitionerDashboardController.url()},
         {label: "Sandbox", icon: TestTubeDiagonal},
     ];
 

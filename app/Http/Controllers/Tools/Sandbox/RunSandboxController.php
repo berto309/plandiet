@@ -22,8 +22,8 @@ class RunSandboxController extends Controller
         ]);
 
 
-//        $sandboxTestResult = $sandbox->run($data);
-        $sandboxTestResult = RuleSandboxTest::first();
+        $sandboxTestResult = $sandbox->run($data);
+//        $sandboxTestResult = RuleSandboxTest::first();
 
         inertia()->flash([
             'toast' => [

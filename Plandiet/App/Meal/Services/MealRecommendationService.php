@@ -27,7 +27,7 @@ class MealRecommendationService
     {
         $this->model             = config('prism.providers.gemini.model');
         $this->maxTokens         = config('prism.meal_max_tokens',         4096);
-        $this->candidatesPerSlot = 1;
+        $this->candidatesPerSlot = 2;
     }
 
 
@@ -237,7 +237,8 @@ PROMPT;
             OperatorEnum::GREATER_THAN_OR_EQUAL_TO   => ((float) ($meal[$key] ?? 0)) >= (float) $rule->value,
             OperatorEnum::EQUAL_TO  => ((string) ($meal[$key] ?? '')) === (string) $rule->value,
             OperatorEnum::EXCLUDE  => ! $this->mealContains($meal, $rule->nutrient),
-            OperatorEnum::PRIORITIZE => true,   // soft signal only — never hard-fails
+            OperatorEnum::REQUIRE => $this->mealContains($meal, $rule->nutrient),
+            OperatorEnum::PRIORITIZE,  => true,   // soft signal only — never hard-fails
             default     => true,
         };
     }
@@ -266,7 +267,7 @@ PROMPT;
                     OperatorEnum::GREATER_THAN_OR_EQUAL_TO  => $value >= (float) $rule->value
                         ? $weight
                         : max(0.0, $weight * ($value / max(1, (float) $rule->value))),
-                    OperatorEnum::PRIORITIZE => $this->mealContains($meal, $rule->nutrient)
+                    OperatorEnum::PRIORITIZE, OperatorEnum::REQUIRE => $this->mealContains($meal, $rule->nutrient)
                         ? $weight * 2.0
                         : 0.0,
                     default     => 0.0,

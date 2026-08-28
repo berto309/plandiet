@@ -13,6 +13,7 @@ enum OperatorEnum: string
     case EQUAL_TO = 'eq';
     case EXCLUDE = 'exclude';
     case PRIORITIZE = 'prioritize';
+    case REQUIRE = 'require';
 
 
 
@@ -23,7 +24,7 @@ enum OperatorEnum: string
             self::LESS_THAN_OR_EQUAL_TO => '<=',
             self::GREATER_THAN_OR_EQUAL_TO => '>=',
             self::EQUAL_TO => 'Equal to',
-            self::EXCLUDE, self::PRIORITIZE => ' → ' . ucfirst($this->value),
+            self::EXCLUDE, self::PRIORITIZE, self::REQUIRE => ' → ' . ucfirst($this->value),
         };
     }
 }

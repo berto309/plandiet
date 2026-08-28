@@ -13,12 +13,14 @@ import MarketingFooter from "@/layouts/Marketing/Footer";
 import FinalCTA from "@/layouts/Marketing/FinalCTA";
 import ForPractitioners from "@/layouts/Marketing/ForPractioners";
 import MarketingModal from "@/components/Modal/MarketingModal";
-import {usePage} from "@inertiajs/react";
+import {Head} from "@inertiajs/react";
 
 
 
 
 export default function Welcome() {
+    <Head title="Clinical nutrition,intelligently personalised" />
+
     const [authModal, setAuthModal] = useState<string | undefined>(undefined);
     const [showStt, setShowStt] = useState(false);
 

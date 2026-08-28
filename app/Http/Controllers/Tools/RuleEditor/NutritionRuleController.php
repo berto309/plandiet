@@ -7,6 +7,7 @@ use App\Http\Controllers\Tools\RuleEditor\Actions\ListNutritionRules;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Inertia\Response;
+use Plandiet\App\Audits\Actions\CreateNutritionRuleHistory;
 use Plandiet\App\Tools\RuleEditor\Actions\CreateNutritionRule;
 use Plandiet\App\Tools\RuleEditor\Actions\DeleteNutritionRule;
 use Plandiet\App\Tools\RuleEditor\Actions\EditNutritionRule;
@@ -17,6 +18,7 @@ use Plandiet\App\Tools\RuleEditor\Models\NutritionRule;
 use Plandiet\App\Tools\RuleEditor\Models\RuleTemplate;
 use Plandiet\App\Tools\RuleEditor\Requests\NutritionRuleRequest;
 use Plandiet\App\Tools\RuleEditor\Resources\NutritionRuleResource;
+use Plandiet\App\Tools\RuleEditor\Services\ConflictDetector;
 use Plandiet\App\Users\Practitioner\Actions\GetPractitionerClientsList;
 use Plandiet\Infrastructure\Enums\OperatorEnum;
 
@@ -46,11 +48,47 @@ class NutritionRuleController extends Controller
         ]);
     }
 
-    public function store(NutritionRuleRequest $request, CreateNutritionRule $createNutritionRule): RedirectResponse
+    public function store(NutritionRuleRequest $request, CreateNutritionRule $createNutritionRule, CreateNutritionRuleHistory $createNutritionRuleHistory, ConflictDetector $conflictDetector): RedirectResponse
     {
+        $validated = $request->validated();
+        $incomingRule = new NutritionRule($validated);
 
-        DB::transaction(function () use ($request, $createNutritionRule) {
-            $createNutritionRule->create(data: $request->validated());
+        $existingRules = NutritionRule::where('client_id', $request->client_id)
+            ->get();
+
+        // Check for conflicts
+        $conflictReport = $conflictDetector->check($incomingRule, $existingRules);
+
+        if($conflictReport->hasAnyConflictsToReport() && !$request->boolean('force')){
+
+            inertia()->flash([
+                'alert' => [
+                    'title' => 'Conflict Detected',
+                    'type' => 'danger',
+                    'message'         => 'This rule conflicts with one or more existing rules. '
+                        . 'Review the conflict report and adjust the rule values to resolve the conflict. ',
+                    'data' => [
+                        'conflict_report' => $conflictReport->toArray(),
+                        'incoming_rule'   => $incomingRule->toArray(),
+                    ]
+                ]
+            ]);
+
+            return back();
+        }
+
+        DB::transaction(function () use ($request, $createNutritionRule, $createNutritionRuleHistory, $validated) {
+
+            $rule = $createNutritionRule->create(data: $validated);
+
+            $historyData = [
+                'nutrition_rule_id' => $rule->id,
+                'changed_by' => auth()->id(),
+                'action' => 'created',
+                'new_state' => json_encode($request->safe()->except(['created_at', 'updated_at'])),
+            ];
+
+            $createNutritionRuleHistory->create(data: $historyData);
         });
 
         inertia()->flash([
@@ -82,10 +120,73 @@ class NutritionRuleController extends Controller
     }
 
 
-    public function update(NutritionRuleRequest $request, NutritionRule $nutritionRule, EditNutritionRule $editNutritionRule): RedirectResponse
+    public function update(NutritionRuleRequest $request, NutritionRule $nutritionRule, EditNutritionRule $editNutritionRule, CreateNutritionRuleHistory $createNutritionRuleHistory, ConflictDetector $conflictDetector): RedirectResponse
     {
-        DB::transaction(function () use ($request, $nutritionRule, $editNutritionRule) {
+
+        $oldSnapshot = [
+            'name'            =>  $nutritionRule->getOriginal('name'),
+            'nutrient'        => $nutritionRule->getOriginal('nutrient'),
+            'operator'        => $nutritionRule->getOriginal('operator')->value,
+            'value'           => $nutritionRule->getOriginal('value'),
+            'unit'            => $nutritionRule->getOriginal('unit')->value,
+            'priority'        => $nutritionRule->getOriginal('priority')->value,
+            'constraint_type' => $nutritionRule->getOriginal('constraint_type')->value,
+        ];
+
+        $prospective = new NutritionRule(array_merge(
+            $nutritionRule->toArray(),
+            $request->validated(),
+        ));
+
+        $prospective->id = $nutritionRule->id; // preserve ID so conflict check can exclude
+
+        $otherRules = NutritionRule::where('client_id', $request->client_id)
+            ->where('id', '!=', $nutritionRule->id)
+            ->get();
+
+        $conflictReport = $conflictDetector->check($prospective, $otherRules);
+
+
+        if($conflictReport->hasAnyConflictsToReport() && !$request->boolean('force')){
+
+            inertia()->flash([
+                'alert' => [
+                    'title' => 'Conflict Detected',
+                    'type' => 'danger',
+                    'message'         => 'This rule conflicts with one or more existing rules. '
+                        . 'Review the conflict report and adjust the rule values to resolve the conflict. ',
+                    'data' => [
+                        'conflict_report'  => $conflictReport->toArray(),
+                        'current_rule'     => $oldSnapshot,
+                        'incoming_rule' => array_intersect_key(
+                            $prospective->toArray(),
+                            array_flip(['nutrient','operator','value','unit','priority','constraint_type'])
+                        ),
+                    ]
+                ]
+            ]);
+
+            return back();
+        }
+
+
+
+        DB::transaction(function () use ($request, $nutritionRule, $editNutritionRule, $createNutritionRuleHistory, $oldSnapshot) {
+
+
             $editNutritionRule->update(nutritionRule:$nutritionRule, data: $request->validated());
+
+
+
+            $historyData = [
+                'nutrition_rule_id' => $nutritionRule->id,
+                'changed_by' => auth()->id(),
+                'action' => 'updated',
+                'previous_state' => json_encode($oldSnapshot),
+                'new_state' => json_encode($request->validated()),
+            ];
+
+            $createNutritionRuleHistory->create(data: $historyData);
         });
 
         inertia()->flash([

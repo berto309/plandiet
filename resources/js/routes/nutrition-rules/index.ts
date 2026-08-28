@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::index
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:27
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:29
  * @route '/practitioner/nutrition-rules'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::index
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:27
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:29
  * @route '/practitioner/nutrition-rules'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::index
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:27
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:29
  * @route '/practitioner/nutrition-rules'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::index
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:27
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:29
  * @route '/practitioner/nutrition-rules'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::create
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:37
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:39
  * @route '/practitioner/nutrition-rules/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -59,7 +59,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::create
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:37
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:39
  * @route '/practitioner/nutrition-rules/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -68,7 +68,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::create
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:37
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:39
  * @route '/practitioner/nutrition-rules/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -77,7 +77,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::create
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:37
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:39
  * @route '/practitioner/nutrition-rules/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -87,7 +87,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::store
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:49
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:51
  * @route '/practitioner/nutrition-rules'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -102,7 +102,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::store
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:49
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:51
  * @route '/practitioner/nutrition-rules'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -111,7 +111,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::store
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:49
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:51
  * @route '/practitioner/nutrition-rules'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -121,7 +121,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::show
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:69
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:107
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 export const show = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -136,7 +136,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::show
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:69
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:107
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 show.url = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -169,7 +169,7 @@ show.url = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule:
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::show
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:69
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:107
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 show.get = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ show.get = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule:
 })
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::show
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:69
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:107
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 show.head = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -188,7 +188,7 @@ show.head = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::update
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:85
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:123
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 export const update = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -203,7 +203,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::update
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:85
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:123
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 update.url = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -236,7 +236,7 @@ update.url = (args: { nutrition_rule: number | { id: number } } | [nutrition_rul
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::update
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:85
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:123
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 update.put = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -245,7 +245,7 @@ update.put = (args: { nutrition_rule: number | { id: number } } | [nutrition_rul
 })
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::update
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:85
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:123
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 update.patch = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -255,7 +255,7 @@ update.patch = (args: { nutrition_rule: number | { id: number } } | [nutrition_r
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::destroy
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:102
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:203
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 export const destroy = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -270,7 +270,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::destroy
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:102
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:203
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 destroy.url = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -303,7 +303,7 @@ destroy.url = (args: { nutrition_rule: number | { id: number } } | [nutrition_ru
 
 /**
 * @see \App\Http\Controllers\Tools\RuleEditor\NutritionRuleController::destroy
- * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:102
+ * @see app/Http/Controllers/Tools/RuleEditor/NutritionRuleController.php:203
  * @route '/practitioner/nutrition-rules/{nutrition_rule}'
  */
 destroy.delete = (args: { nutrition_rule: number | { id: number } } | [nutrition_rule: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({

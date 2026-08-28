@@ -7,8 +7,8 @@ use Plandiet\App\Tools\RuleEditor\Models\NutritionRule;
 
 final class CreateNutritionRule
 {
-    public function create(array $data): void
+    public function create(array $data): NutritionRule
     {
-        NutritionRule::create($data);
+        return NutritionRule::create($data);
     }
 }

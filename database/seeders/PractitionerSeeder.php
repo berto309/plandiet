@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Plandiet\App\Users\Practitioner\Enums\ProfessionalTitleEnum;
@@ -29,7 +30,7 @@ class PractitionerSeeder extends Seeder
             [
                 'name'              => 'Sarah Okonkwo',
                 'email'             => 'sarah@plandiet.com',
-                'phone'             => array_rand(['07325654474', '07555658874']),
+                'phone'             => Arr::random(['07325654474', '07555658874']),
                 'date_of_birth'     => now()->subYears(30),
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::PRACTITIONER->value,
@@ -40,7 +41,7 @@ class PractitionerSeeder extends Seeder
             [
                 'name'              => 'Dr. Amir Hassan',
                 'email'             => 'amir@plandiet.com',
-                'phone'             => array_rand(['07325654236', '07555658532']),
+                'phone'             => Arr::random(['07325654236', '07555658532']),
                 'date_of_birth'     => now()->subYears(30),
                 'password'          => Hash::make('123456'),
                 'role'              => UserRoleEnum::PRACTITIONER->value,
@@ -66,7 +67,7 @@ class PractitionerSeeder extends Seeder
                 'user' => [
                     'name'              => 'Sarah Okonkwo',
                     'email'             => 'sarah@plandiet.com',
-                    'phone'             =>  array_rand(['07325654400', '07555658634']),
+                    'phone'             => Arr::random(['07325654400', '07555658634']),
                     'date_of_birth'     => now()->subYears(34),
                     'password'          => Hash::make('123456'),
                     'role'              => UserRoleEnum::PRACTITIONER->value,
@@ -96,7 +97,7 @@ class PractitionerSeeder extends Seeder
                 'user' => [
                     'name'              => 'Dr. Amir Hassan',
                     'email'             => 'amir@plandiet.com',
-                    'phone'             =>  array_rand(['07325654432', '07555650074']),
+                    'phone'             => Arr::random(['07325654432', '07555650074']),
                     'date_of_birth'     => now()->subYears(50),
                     'password'          => Hash::make('123456'),
                     'role'              => UserRoleEnum::PRACTITIONER->value,
@@ -124,7 +125,7 @@ class PractitionerSeeder extends Seeder
                 'user' => [
                     'name'              => 'Emma Clarke',
                     'email'             => 'emma@plandiet.com',
-                    'phone'             =>  array_rand(['07325654100', '07555658400']),
+                    'phone'             =>  Arr::random(['07325654100', '07555658400']),
                     'date_of_birth'     => now()->subYears(53),
                     'password'          => Hash::make('123456'),
                     'role'              => UserRoleEnum::PRACTITIONER->value,

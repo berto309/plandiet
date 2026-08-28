@@ -1,11 +1,13 @@
 import React from 'react';
-import {isCritical, isHigh, isLow, isMedium, isSoft} from "@/types/enums";
+import {isCritical, isHigh, isLow, isMedium, isPractitioner, isSoft} from "@/types/enums";
 import EmptyState from "@/components/State/EmptyState";
 import {User} from "@/types/types";
-import {Link} from "@inertiajs/react";
+import {Link, usePage} from "@inertiajs/react";
 import NutritionRuleController from "@/actions/App/Http/Controllers/Tools/RuleEditor/NutritionRuleController";
 
 const NutritionRulesCard = ({client}: {client: User}) => {
+    const {auth} = usePage().props
+
     return (
         <div className="card">
             <div className="ch"><span className="ct">Active rules ({client.nutrition_rules.filter((r) => r.is_active).length})</span>

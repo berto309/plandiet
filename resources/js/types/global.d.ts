@@ -7,7 +7,7 @@ import {
     ClientHealthProfile,
     Invite,
     MealPlanItem,
-    NutritionRule,
+    NutritionRule, NutritionRuleHistory,
     PaginatedData,
     PractitionerClient,
     PractitionerComplianceThisWeek,
@@ -51,6 +51,8 @@ declare module "@inertiajs/core" {
         nutritionRule: NutritionRule,
         nutritionRules: PaginatedData<NutritionRule>,
         clientNutritionRulesList: NutritionRule[],
+        nutritionRuleHistory: PaginatedData<NutritionRuleHistory>,
+        nutritionRuleHistoryItem: NutritionRuleHistory,
         sandboxTest?: SandBoxTest,
         sandBoxResults: PaginatedData<SandBoxTest>,
         ruleCategories: AppEnums,
@@ -76,7 +78,7 @@ declare module "@inertiajs/core" {
         allergiesList: AppEnums,
         conditionsList: AppEnums,
         mealHistory: MealPlanItem[],
-        clientComplianceTargets: ClientComplianceDashboardTargets
+        clientComplianceTargets: ClientComplianceDashboardTargets,
         clientStreak: number,
     }
 }
@@ -84,7 +86,7 @@ declare module "@inertiajs/core" {
 declare module "@inertiajs/react" {
     export interface InertiaConfig {
         flashDataType: {
-            flash?: {
+            alert?: {
                 type: 'success' | 'danger' | 'error' ;
                 message: string,
                 data: any,

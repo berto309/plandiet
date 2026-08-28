@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Analytics\Admin\AdminDashboardController;
 use App\Http\Controllers\Analytics\Client\ClientsOverviewController;
+use App\Http\Controllers\Audits\NutritionRuleHistoryController;
 use App\Http\Controllers\Settings\AdminSettingsController;
 use App\Http\Controllers\Tools\RuleEditor\RuleTemplateController;
 use App\Http\Controllers\Users\AdminProfileController;
@@ -34,6 +35,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     // Settings
     Route::resource('settings', AdminSettingsController::class)->only(['index', 'update']);
 
+    // Audit
+    Route::get('nutrition-rules-history', [NutritionRuleHistoryController::class, 'index'])->name('admin.nutrition-rules-history.index');
+    Route::get('nutrition-rules-history/{nutritionRuleHistory}/show', [NutritionRuleHistoryController::class, 'show'])->name('admin.nutrition-rules-history.show');
 
 
 });

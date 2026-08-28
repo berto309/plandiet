@@ -1,5 +1,5 @@
-import React from 'react';
-import {Crumb} from "@/types/types";
+import React, {useState} from 'react';
+import {ConflictReport, Crumb} from "@/types/types";
 import {Edit, LayoutDashboard, PlusIcon, Scale} from "lucide-react";
 import {Breadcrumbs} from "@/components/Menu/Breadcrumbs";
 import {Head, useForm, usePage} from "@inertiajs/react";
@@ -13,6 +13,7 @@ import PractitionerDashboardController
     from "@/actions/App/Http/Controllers/Analytics/Practitioner/PractitionerDashboardController";
 import NutritionRuleController from "@/actions/App/Http/Controllers/Tools/RuleEditor/NutritionRuleController";
 import {getOperatorTranslation} from "@/types/enums";
+import ConflictReportCard from "@/components/Card/ConflictReportCard";
 
 
 
@@ -27,6 +28,7 @@ const EditNutritionRulePage = () => {
 
     const {nutritionRule, practitionerClientsList, ruleTemplateList, ruleOperators, rulePriorities, ruleConstraintTypes, ruleUnits} = usePage().props
     const  toast = useToast()
+    const [conflictReport, setConflictReport] = useState<ConflictReport | null>(null);
 
 
     function getSelectedTemplate(value: string) {
@@ -62,13 +64,28 @@ const EditNutritionRulePage = () => {
         e.preventDefault()
 
         put(NutritionRuleController.update.url(nutritionRule.id), {
-            onSuccess: () => {
-                toast.success('Nutrition rule updated')
+            onSuccess: (page) => {
+
+                if(page.flash.toast)
+                {
+                    toast.success(page.flash.toast.message)
+                }
             },
             onError: (errors) => {
 
                 const firstError = Object.values(errors)[0]
                 toast.error(typeof firstError === 'string' ? firstError : 'Something went wrong')
+            },
+            onFlash: ({alert}) => {
+                if(alert){
+                    toast.error(
+                        alert.title,
+                        alert.message
+                    )
+
+                    setConflictReport(alert.data.conflict_report)
+
+                }
             },
         })
 
@@ -261,6 +278,10 @@ const EditNutritionRulePage = () => {
                     </div>
                 </form>
             </FormCard>
+
+            {/* Conflict report */}
+            <ConflictReportCard conflictReport={conflictReport} />
+
         </PractitionerPortalLayout>
     );
 };

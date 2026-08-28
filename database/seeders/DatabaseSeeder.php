@@ -15,12 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if(app()->isProduction()){
-            $this->call([
-                UserSeeder::class,
-                RuleTemplateSeeder::class,
-            ]);
-        } else {
+
             $this->call([
                 UserSeeder::class,
                 RuleTemplateSeeder::class,
@@ -28,6 +23,6 @@ class DatabaseSeeder extends Seeder
                 ClientSeeder::class,
                 NutritionRuleSeeder::class,
             ]);
-        }
+
     }
 }

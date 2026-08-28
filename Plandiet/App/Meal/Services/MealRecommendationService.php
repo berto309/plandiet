@@ -27,7 +27,7 @@ class MealRecommendationService
     {
         $this->model             = config('prism.providers.gemini.model');
         $this->maxTokens         = config('prism.meal_max_tokens',         4096);
-        $this->candidatesPerSlot = 2;
+        $this->candidatesPerSlot = 1;
     }
 
 

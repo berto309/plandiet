@@ -20,7 +20,7 @@ class PractitionerSeeder extends Seeder
 {
     public function run(): void
     {
-        $fake = Factory::create();
+
 
         $regDietician = ProfessionalTitleEnum::REGISTERED_DIETICIAN;
         $regNutrition = ProfessionalTitleEnum::REGISTERED_NUTRITIONIST;

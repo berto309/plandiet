@@ -8,7 +8,7 @@ import {
     Menu,
     X,
     Scale,
-    User,
+    User, ChartNetwork,
 } from "lucide-react";
 import {NavSection} from "@/types/types";
 import {AdminAccountMenu} from "@/components/Menu/AdminAccountMenu";
@@ -18,6 +18,7 @@ import VerificationQueueController from "@/actions/App/Http/Controllers/Verifica
 import PractitionersManagementController from "@/actions/App/Http/Controllers/Users/PractitionersManagementController";
 import ClientsOverviewController from "@/actions/App/Http/Controllers/Analytics/Client/ClientsOverviewController";
 import RuleTemplateController from "@/actions/App/Http/Controllers/Tools/RuleEditor/RuleTemplateController";
+import NutritionRuleHistoryController from "@/actions/App/Http/Controllers/Audits/NutritionRuleHistoryController";
 
 
 
@@ -32,13 +33,12 @@ const NAV_SECTIONS: NavSection[] = [
             { name: "Rule Templates", icon: Scale, href: RuleTemplateController.index.url()}
         ],
     },
-    // {
-    //     label: "Account",
-    //     items: [
-    //         { name: "Settings", icon: Settings, href: AdminSettingsController.index.name },
-    //         { name: "Profile", icon: User, href: AdminProfileController.index.name },
-    //     ],
-    // },
+    {
+        label: "Audits",
+        items: [
+            { name: "Nutrition Rule Audits", icon: ChartNetwork, href: NutritionRuleHistoryController.index.url()},
+        ],
+    },
 ];
 
 
@@ -48,14 +48,14 @@ interface SidebarProps {
 }
 
 function Sidebar({ onClose }: SidebarProps): ReactNode {
-    const {auth} = usePage().props
+    const {auth, app} = usePage().props
 
     return (
         <div className="flex h-full flex-col bg-emerald-950 text-emerald-50">
             <div className="flex items-center justify-between px-6 pt-7 pb-6">
                 <div>
                     <h1 className="font-serif text-2xl tracking-tight text-white">
-                        PlanDiet
+                        {app.name}
                     </h1>
                     <p className="mt-0.5 text-[11px] text-capitalize font-medium tracking-[0.18em] text-emerald-400/80 uppercase">
                         {auth.user.role}

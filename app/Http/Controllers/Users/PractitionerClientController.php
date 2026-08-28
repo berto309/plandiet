@@ -57,7 +57,7 @@ class PractitionerClientController extends Controller
            'cuisinePreferencesList' => CuisinePreferencesEnum::toArray(),
            'allergiesList' => AllergyEnum::toArray(),
            'conditionsList' => ClientConditionsEnum::toArray()
-       ]) ;
+       ]);
     }
 
     public function store(ClientHealthProfileRequest $request, User $client): Response|RedirectResponse

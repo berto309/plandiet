@@ -15,9 +15,4 @@ class MealPlanItem extends Model
         'was_swapped' => 'boolean',
     ];
 
-    public function mealRating(): HasOne
-    {
-        return $this->hasOne(MealRating::class);
-
-    }
 }

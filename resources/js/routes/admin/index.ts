@@ -1,5 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 import profile937a89 from './profile'
+import nutritionRulesHistory from './nutrition-rules-history'
 /**
 * @see \App\Http\Controllers\Analytics\Admin\AdminDashboardController::__invoke
  * @see app/Http/Controllers/Analytics/Admin/AdminDashboardController.php:13
@@ -88,6 +89,7 @@ profile.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 const admin = {
     dashboard: Object.assign(dashboard, dashboard),
 profile: Object.assign(profile, profile937a89),
+nutritionRulesHistory: Object.assign(nutritionRulesHistory, nutritionRulesHistory),
 }
 
 export default admin

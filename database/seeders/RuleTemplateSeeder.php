@@ -113,7 +113,7 @@ class RuleTemplateSeeder extends Seeder
                 'priority'           => 'critical',
                 'category'           => RuleTemplateCategoryEnum::CHRONIC_CONDITION->value,
                 'clinical_rationale' => 'Total daily sodium below 1500 mg associated with significant BP reduction.',
-                'evidence_source'    => 'American Heart Association 2024',
+                    'evidence_source'    => 'American Heart Association 2024',
             ],
             [
                 'name'               => $name6,

@@ -126,6 +126,7 @@ export enum OperatorEnum
      EQUAL_TO = 'eq',
      EXCLUDE = 'exclude',
      PRIORITIZE = 'prioritize',
+    REQUIRE = 'require'
 
 }
 
@@ -179,6 +180,10 @@ export function isSnack(mealType: string): boolean
 }
 
 
-
+export enum ConflictLevelEnum {
+    HARD = 'hard',
+    SOFT = 'soft',
+    NEAR = 'near',
+}
 
 

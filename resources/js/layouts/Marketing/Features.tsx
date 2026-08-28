@@ -73,7 +73,8 @@ export default function Features() {
                 </div>
 
                 {/* Invite system wide card */}
-                <div className="sr-scale grid lg:grid-cols-2 grid-cols-1 overflow-hidden rounded-2xl border border-[rgba(31,94,31,0.1)]">
+                <div className="sr-scale grid lg:grid-cols-2 grid-cols-1 overflow-hidden rounded-2xl border border-[rgba(31,94,31,0.1)]"
+                     style={{marginTop: "50px"}}>
                     <div style={{ padding: "2.5rem", background: C.forest }}>
                         <div className="overline-text" style={{ color: "rgba(216,244,216,.5)", marginBottom: "1rem" }}>Invite-only access</div>
                         <h3 className="display" style={{ fontSize: "2rem", color: "white", marginBottom: "1rem" }}>Every client linked to a <em style={{ fontStyle: "italic", color: "rgba(134,239,172,.85)" }}>verified clinician</em></h3>

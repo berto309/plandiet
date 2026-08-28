@@ -39,6 +39,18 @@
     --color-cream: #faf7f0;
     --color-cream-dark: #f2ead8;
 
+    --color-sage: #2D6A4F;
+    --color-sage-light: #40916C;
+    --color-sage-pale: #D8F3DC;
+    --color-sage-mist: #95D5B2;
+    --color-ink: #1A2E1F;
+    --color-ink-text: #2D3A2E;
+    --color-muted: #6B7F6C;
+    --color-danger: #E63946;
+    --color-warn: #F59E0B;
+    --color-info: #0EA5E9;
+    --color-overlay: rgb(20 30 22 / 0.48);
+
 
     /* Animations */
     --animate-fade-up: fadeUp 0.5s ease both;

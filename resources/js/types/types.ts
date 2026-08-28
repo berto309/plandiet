@@ -1,4 +1,10 @@
 import {ComponentType} from "react";
+import {
+    ConflictLevelEnum,
+    NutritionRuleConstraintTypeEnum,
+    NutritionRulePriorityEnum,
+    OperatorEnum
+} from "@/types/enums";
 
 export interface User {
     id: number,
@@ -368,6 +374,234 @@ export interface PractitionerComplianceThisWeek {
     meal_plans_percentage: number
 }
 
+export interface NutritionRuleHistory{
+    id: number
+    nutrition_rule: NutritionRule,
+    user: User,
+    action: HistoryAction;
+    previous_state: unknown;
+    new_state?: unknown;
+    change_reason: string | null;
+    created_at: string
+}
+
+export interface NutritionRuleHistoryEntry {
+    id: number;
+    nutrition_rule_id: number;
+    rule_name?: string; // denormalized, e.g. from an eager-loaded relation
+    changed_by: number;
+    changed_by_name?: string;
+    changed_by_initials?: string;
+    action: HistoryAction;
+    previous_state: unknown; // JSON string | object | null
+    new_state: unknown; // JSON string | object
+    change_reason: string | null;
+    created_at: string; // ISO timestamp
+}
+
+
+/**
+ * previous_state / new_state come from a Laravel `json` column with no cast,
+ * so the API can return them as an already-serialized JSON string rather than
+ * a parsed object. parseState normalizes either shape to a plain object.
+ */
+export function parseState(state: unknown): Record<string, unknown> | null {
+    if (state === null || state === undefined) return null;
+    if (typeof state === "string") {
+        try {
+            const parsed = JSON.parse(state);
+            return typeof parsed === "object" && parsed !== null ? (parsed as Record<string, unknown>) : null;
+        } catch {
+            return null;
+        }
+    }
+    if (typeof state === "object") return state as Record<string, unknown>;
+    return null;
+}
+
+/**
+ * Individual field values can themselves be JSON strings (e.g. `applies_when`
+ * is sometimes double-encoded inside new_state). normalizeValue parses those
+ * so the same field compares/display consistently regardless of which side
+ * of the diff it came from.
+ */
+export function normalizeValue(value: unknown): unknown {
+    if (typeof value === "string") {
+        const t = value.trim();
+        if ((t.startsWith("{") && t.endsWith("}")) || (t.startsWith("[") && t.endsWith("]"))) {
+            try {
+                return JSON.parse(t);
+            } catch {
+                return value;
+            }
+        }
+    }
+    return value;
+}
+
+export function stringifyValue(value: unknown): string {
+    const v = normalizeValue(value);
+    if (v === null || v === undefined || v === "") return "—";
+    if (typeof v === "boolean") return v ? "Yes" : "No";
+    if (Array.isArray(v)) return v.length ? v.map(stringifyValue).join(", ") : "—";
+    if (typeof v === "object") {
+        const entries = Object.entries(v as Record<string, unknown>);
+        return entries.length ? entries.map(([k, val]) => `${k}: ${stringifyValue(val)}`).join(", ") : "—";
+    }
+    return String(v);
+}
+
+export type DiffStatus = "added" | "removed" | "changed" | "unchanged";
+
+export interface DiffRow {
+    key: string;
+    label: string;
+    prev: string;
+    next: string;
+    status: DiffStatus;
+}
+
+function humanizeKey(key: string): string {
+    return key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/**
+ * Columns that exist on the model but aren't meaningful "field changes" —
+ * previous_state is a full model dump (id, timestamps, version, foreign
+ * keys to templates) while new_state is only the fillable attributes that
+ * were actually written. Without this exclusion every one of these would
+ * show up as "removed" on every single update.
+ */
+const META_ARRAY = ["id",  "practitioner_id", "client_id", "created_at", "updated_at", "deleted_at", "version", "rule_template_id"];
+const META_KEYS = new Set(META_ARRAY);
+
+/**
+ * Compares previous_state and new_state (raw values straight from the
+ * nutrition_rule_history columns — either JSON strings or already-parsed
+ * objects) and returns one row per business-state field, classified as
+ * added / removed / changed / unchanged.
+ *
+ * - previous is null on the 'created' action -> every field is "added".
+ * - Keys only present in previous_state's full dump (see META_KEYS) are
+ *   treated as record metadata, not diffed.
+ */
+export function diffStates(previousRaw: unknown, nextRaw: unknown): DiffRow[] {
+    const previous = parseState(previousRaw);
+    const next = parseState(nextRaw) ?? {};
+
+    const keys = new Set<string>([
+        ...Object.keys(next),
+        ...(previous ? Object.keys(previous).filter((k) => !META_KEYS.has(k)) : []),
+    ]);
+
+
+
+    const rows: DiffRow[] = [];
+
+    keys.forEach((key) => {
+        const prevRaw = previous ? previous[key] : undefined;
+        const nextRawVal = next[key];
+        const prevValue = normalizeValue(prevRaw);
+        const nextValue = normalizeValue(nextRawVal);
+
+        let status: DiffStatus;
+        if (!previous || prevRaw === undefined) status = "added";
+        else if (nextRawVal === undefined) status = "removed";
+        else if (JSON.stringify(prevValue) !== JSON.stringify(nextValue)) status = "changed";
+        else status = "unchanged";
+
+        rows.push({
+            key,
+            label: humanizeKey(key),
+            prev: stringifyValue(prevRaw),
+            next: stringifyValue(nextRawVal),
+            status,
+        });
+    });
+
+
+
+    return rows.sort((a, b) => a.label.localeCompare(b.label));
+}
+
+
+
+export type HistoryAction = "created" | "updated" | "activated" | "deactivated" | "deleted";
+
+
+
+/* ============================================================
+   Display fallbacks — used whenever the API didn't eager-load
+   the denormalized fields above.
+   ============================================================ */
+
+export function resolveRuleName(entry: NutritionRuleHistory): string {
+
+    if (entry.nutrition_rule.name) return entry.nutrition_rule.name;
+    const state = (parseState(entry.new_state) ?? parseState(entry.previous_state)) as Record<string, unknown> | null;
+    const name = state?.name;
+    return typeof name === "string" && name ? name : `Rule #${entry.nutrition_rule.id}`;
+}
+
+export function resolveChangedByLabel(entry: NutritionRuleHistory): string {
+    return entry.user.name ?? `User #${entry.user.id}`;
+}
+
+export function resolveInitials(entry: NutritionRuleHistory): string {
+
+        return entry.user.name
+            .split(" ")
+            .map((p) => p[0])
+            .join("")
+            .slice(0, 2)
+            .toUpperCase()
+
+}
+
+/**
+ * Metadata that only lives inside previous_state's full model dump
+ * (id, version, rule_template_id, timestamps) — useful for the detail
+ * page's sidebar, not part of the field-change diff itself.
+ */
+export function resolveRecordMeta(entry: NutritionRuleHistory): { version?: unknown; ruleTemplateId?: unknown } {
+    const state = parseState(entry.previous_state) as Record<string, unknown> | null;
+    return { version: state?.version, ruleTemplateId: state?.rule_template_id };
+}
+
+
+
+export const ACTION_META: Record<HistoryAction, { label: string; badgeClass: string; dotClass: string }> = {
+    created: { label: "Created", badgeClass: "bg-sage-pale text-sage", dotClass: "bg-sage" },
+    updated: { label: "Updated", badgeClass: "bg-info/15 text-info", dotClass: "bg-info" },
+    activated: { label: "Activated", badgeClass: "bg-sage-mist/40 text-sage", dotClass: "bg-sage-light" },
+    deactivated: { label: "Deactivated", badgeClass: "bg-warn/15 text-warn", dotClass: "bg-warn" },
+    deleted: { label: "Deleted", badgeClass: "bg-danger/15 text-danger", dotClass: "bg-danger" },
+};
+
+type Operator = OperatorEnum.LESS_THAN_OR_EQUAL_TO | OperatorEnum.GREATER_THAN_OR_EQUAL_TO | OperatorEnum.EQUAL_TO | OperatorEnum.EXCLUDE | OperatorEnum.REQUIRE | OperatorEnum.PRIORITIZE;
+type ConstraintType = NutritionRuleConstraintTypeEnum.HARD | NutritionRuleConstraintTypeEnum.SOFT;
+type Priority = NutritionRulePriorityEnum.CRITICAL | NutritionRulePriorityEnum.HIGH | NutritionRulePriorityEnum.MEDIUM | NutritionRulePriorityEnum.LOW;
+type ConflictLevel = ConflictLevelEnum.HARD | ConflictLevelEnum.SOFT | ConflictLevelEnum.NEAR;
+
+export interface ConflictEntry {
+    id: string;
+    level: ConflictLevel;
+    type: string;
+    message: string;
+    incomingRule: { nutrient_key: string; operator: Operator; value?: number; priority: Priority };
+    conflictingRule: { id: number; nutrient_key: string; operator: Operator; value?: number; priority: Priority; label?: string };
+    detail?: { lower_bound?: number; upper_bound?: number; window?: number; typical_range_pct?: number };
+}
+
+export interface ConflictReport {
+    has_hard_conflicts: boolean;
+    has_soft_conflicts: boolean;
+    summary: string;
+    hard: ConflictEntry[];
+    soft: ConflictEntry[];
+    near: ConflictEntry[];
+    existing: NutritionRule[]
+}
 
 
 

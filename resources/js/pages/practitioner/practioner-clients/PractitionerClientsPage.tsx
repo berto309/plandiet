@@ -42,7 +42,7 @@ const PractitionerClientsPage = () => {
         {
             key: "condition",
             header: "Condition",
-            render: (row) => <span className="whitespace-nowrap text-stone-500">{row.user.client_health_profile?.conditions.length > 0 ? row.user.client_health_profile?.conditions?.join(', ') : ''}</span>
+            render: (row) => <span className="whitespace-nowrap text-stone-500">{row.user.client_health_profile?.conditions.length > 0 ? JSON.parse(row.user.client_health_profile?.conditions).join(', ') : ''}</span>
         },
     ];
 

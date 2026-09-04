@@ -19,7 +19,7 @@ class ClientHealthProfileResource extends JsonResource
             'id' => $this->id,
             'conditions' => is_null($this->conditions) ?  [] : json_decode($this->conditions, true),
             'allergies' =>  is_null($this->allergies) ? [] : json_decode($this->allergies, true),
-            'intolerances' => $this->intolerances,
+            'intolerances' => is_null($this->intolerances) ?  [] : json_decode($this->intolerances, true),
             'primary_goal' => $this->primary_goal,
             'height_cm' =>  $this->height_cm,
             'weight_kg' => $this->weight_kg,

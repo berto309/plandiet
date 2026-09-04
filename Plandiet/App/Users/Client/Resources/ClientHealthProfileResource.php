@@ -14,10 +14,11 @@ class ClientHealthProfileResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
         return [
             'id' => $this->id,
-            'conditions' => $this->conditions,
-            'allergies' =>  $this->allergies,
+            'conditions' => is_null($this->conditions) ?  [] : json_decode($this->conditions, true),
+            'allergies' =>  is_null($this->allergies) ? [] : json_decode($this->allergies, true),
             'intolerances' => $this->intolerances,
             'primary_goal' => $this->primary_goal,
             'height_cm' =>  $this->height_cm,
@@ -29,8 +30,8 @@ class ClientHealthProfileResource extends JsonResource
             'target_fat_g' => $this->target_fat_g,
             'target_fibre_g' => $this->target_fibre_g,
             'target_sodium_mg' => $this->target_sodium_mg,
-            'cuisine_preferences' => $this->cuisine_preferences,
-            'dietary_preferences' => $this->dietary_preferences,
+            'cuisine_preferences' => is_null($this->cuisine_preferences) ? [] : json_decode($this->cuisine_preferences, true),
+            'dietary_preferences' => is_null($this->dietary_preferences) ? [] : json_decode($this->dietary_preferences, true),
             'meals_per_day' => $this->meals_per_day,
             'max_cooking_minutes' => $this->max_cooking_minutes,
         ];

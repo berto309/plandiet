@@ -103,7 +103,7 @@ const PractitionerClientProfilePage = () => {
                                 className="pv warn">{client.client_health_profile?.conditions?.join(' · ')}</span></div>
                             <div className="prow"><span className="pk">Allergies</span><span className="pv bad">{client.client_health_profile?.allergies?.join(' · ')}</span>
                             </div>
-                            <div className="prow"><span className="pk">Dietary preferences</span><span className="pv bad">{client.client_health_profile?.dietary_preferences?.join(' · ')}</span>
+                            <div className="prow"><span className="pk">Dietary preferences</span><span className="pv bad">{client.client_health_profile?.dietary_preferences?.length > 0 && client.client_health_profile?.dietary_preferences?.join(' · ')}</span>
                             </div>
 
 

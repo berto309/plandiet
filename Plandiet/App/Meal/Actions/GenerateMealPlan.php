@@ -33,7 +33,7 @@ final class GenerateMealPlan
             rules:   $rules,
             options: [
                 'meals_per_day'       => $healthProfile->meals_per_day,
-                'cuisine_preferences' => $healthProfile->cuisine_preferences ?? [],
+                'cuisine_preferences' => json_decode($healthProfile->cuisine_preferences) ?? [],
                 'max_cooking_minutes' => $healthProfile->max_cooking_minutes,
             ]
         );

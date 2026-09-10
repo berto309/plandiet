@@ -28,14 +28,14 @@ export default function Hero({onAuth}: HeroProp) {
                 {/* Headline */}
                 <div className="sr" data-delay="2" style={{ textAlign: "center", maxWidth: 900, margin: "0 auto" }}>
                     <h1 className="hero-xl display" style={{ color: C.charcoal }}>
-                        Clinical nutrition,<br />
-                        <em style={{ color: C.forest, fontStyle: "italic" }}>intelligently</em><br />
-                        personalised
+                        Your clinical rules,<br />
+                        <em style={{ color: C.forest, fontStyle: "italic" }}>Every client's</em><br />
+                        daily meals
                     </h1>
                 </div>
 
                 <div className="sr" data-delay="3" style={{ textAlign: "center", maxWidth: 640, margin: "1.5rem auto 2.5rem", fontSize: "clamp(1.05rem,1.5vw,1.25rem)", lineHeight: 1.75, fontWeight: 300, color: C.muted }}>
-                    PlanDiet connects verified dietitians with their clients through an AI that generates safe, personalised meal plans — governed entirely by the practitioner's clinical rules. Every meal explained. Every constraint enforced. Every day.
+                    PlanDiet generates personalised, safe meal plans for your clients every single day — governed entirely by the constraints you set. Your expertise, extended between every appointment.
                 </div>
 
                 {/* CTAs */}
@@ -46,7 +46,7 @@ export default function Hero({onAuth}: HeroProp) {
                 {/* Trust badges */}
                 <div className="sr" data-delay="5" style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", justifyContent: "center", marginBottom: "4rem" }}>
                     {[
-                        ["HCPC and AfN verified practitioners"],
+                        ["For HCPC and AfN verified practitioners"],
                         // ["AfN GDPR compliant"],
                         ["Zero hard-rule violations"],
                         // ["Full audit trail"],
@@ -62,7 +62,7 @@ export default function Hero({onAuth}: HeroProp) {
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-4 pb-0 relative">
 
                         {/* LEFT: Practitioner rules */}
-                        <div className="float-c" style={{ borderRadius: "1rem", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,.35)", background: C.charcoal }}>
+                        <div className="float-a" style={{ borderRadius: "1rem", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,.35)", background: C.charcoal }}>
                             <div style={{ padding: "12px 16px", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
                                 <div className="mono" style={{ fontSize: ".7rem", color: "rgba(255,255,255,.3)", marginBottom: 2 }}>practitioner view</div>
                                 <div style={{ fontSize: ".875rem", fontWeight: 500, color: "rgba(255,255,255,.85)" }}>Fatima Al-Hassan — Rules</div>
@@ -87,47 +87,7 @@ export default function Hero({onAuth}: HeroProp) {
                             </div>
                         </div>
 
-                        {/* CENTRE: Pipeline */}
-                        <div className="float-a" style={{ borderRadius: "1rem", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,.2)", background: "white", border: "1px solid #d4ecd4", position: "relative", marginTop: -20 }}>
-                            <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)" }}>
-                                <span style={{ fontSize: ".7rem", fontWeight: 500, padding: "4px 14px", borderRadius: 999, background: C.forest, color: "white", boxShadow: "0 2px 8px rgba(0,0,0,.2)" }}>AI pipeline</span>
-                            </div>
-                            <div style={{ padding: "1.5rem 1rem 1rem" }}>
-                                <div className="mono" style={{ fontSize: ".7rem", color: C.mutedLight, marginBottom: "1rem" }}>neurosymbolic engine</div>
-                                <div style={{ borderRadius: 12, padding: 12, background: C.forestFaint, marginBottom: 8 }}>
-                                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                                        <span style={{ width: 20, height: 20, borderRadius: "50%", background: C.forest, color: "white", fontSize: ".7rem", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center" }}>1</span>
-                                        <span style={{ fontSize: ".7rem", fontWeight: 600, color: C.forest }}>LLM generates candidates</span>
-                                    </div>
-                                    <div className="mono" style={{ fontSize: ".65rem", color: C.mutedLight }}>claude-sonnet → 5×4 slots = 20</div>
-                                </div>
-                                <div style={{ textAlign: "center", color: C.forestPale, margin: "4px 0" }}>↓</div>
-                                <div style={{ borderRadius: 12, padding: 12, background: "#fffbeb", border: "1px solid #fde68a", marginBottom: 8 }}>
-                                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                                        <span style={{ width: 20, height: 20, borderRadius: "50%", background: "#fcd34d", color: "#92400e", fontSize: ".7rem", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center" }}>2</span>
-                                        <span style={{ fontSize: ".7rem", fontWeight: 600, color: "#92400e" }}>Hard rule filter</span>
-                                    </div>
-                                    {["Almond porridge (nuts)", "Banana pancakes (52g carbs)", "Prawn stir-fry (shellfish)"].map((m) => (
-                                        <div key={m} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: ".65rem", color: "#9a3412", marginBottom: 2 }}>
-                                            <span>✗</span><span style={{ textDecoration: "line-through", opacity: .7 }}>{m}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div style={{ textAlign: "center", color: C.forestPale, margin: "4px 0" }}>↓</div>
-                                <div style={{ borderRadius: 12, padding: 12, background: C.forest, color: "white" }}>
-                                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                                        <span style={{ width: 20, height: 20, borderRadius: "50%", background: "rgba(255,255,255,.2)", fontSize: ".7rem", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center" }}>3</span>
-                                        <span style={{ fontSize: ".7rem", fontWeight: 600 }}>Selected ✓</span>
-                                    </div>
-                                    <div className="mono" style={{ fontSize: ".65rem", color: "rgba(255,255,255,.65)" }}>Greek yogurt · 22g · safe · halal</div>
-                                </div>
-                                <div style={{ marginTop: 12, padding: 12, borderRadius: 12, background: C.forestFaint, fontSize: ".7rem", color: C.muted }}>
-                                    <strong style={{ color: C.forest }}>Why this meal?</strong> 22g carbs ≤ 40g limit. Nut-free. Halal. Mediterranean preference match.
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* RIGHT: Client view */}
+                        {/* CENTRE: Client view */}
                         <div className="float-b" style={{ borderRadius: "1rem", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,.1)", background: "white", border: "1px solid #e8dcc4" }}>
                             <div style={{ padding: "12px 16px", borderBottom: "1px solid #e8dcc4" }}>
                                 <div className="mono" style={{ fontSize: ".7rem", color: C.mutedLight, marginBottom: 2 }}>client receives</div>
@@ -154,9 +114,49 @@ export default function Hero({onAuth}: HeroProp) {
                                 {["✓ Nut-free", "✓ Halal", "✓ Low GI"].map((t) => <span key={t} className="pill" style={{ fontSize: ".65rem" }}>{t}</span>)}
                             </div>
                         </div>
+
+                        {/* RIGHT: Compliance view */}
+                        <div className="float-c" style={{ borderRadius: "1rem", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,.1)", background: "white", border: "1px solid #e8dcc4" }}>
+                            <div style={{ padding: "12px 16px", borderBottom: "1px solid #e8dcc4" }}>
+                                <div className="mono" style={{ fontSize: ".7rem", color: C.mutedLight, marginBottom: 2 }}>Your compliance view</div>
+                                <div style={{ fontSize: ".875rem", fontWeight: 500, color: C.charcoal }}>This week — Fatima</div>
+                            </div>
+                            <div style={{display: "flex", flexDirection: "column", gap: 10, padding: "12px"}}>
+                                {[["Sodium compliance", "87%", C.forestLight], ["Fibre target", "65%", "#d97706"], ["Carb ceiling adherence", "100%", C.forest]].map(([label, val, color]) => (
+                                    <div key={label}>
+                                        <div style={{
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            fontSize: ".75rem",
+                                            color: C.muted,
+                                            marginBottom: 4,
+                                            padding:"10px",
+                                            paddingLeft:"0"
+                                        }}><span>{label}</span><span style={{fontWeight: 500, color}}>{val}</span></div>
+                                        <div style={{height: 6, borderRadius: 999, background: C.ivoryDeep}}>
+                                            <div style={{
+                                                height: "100%",
+                                                borderRadius: 999,
+                                                background: color,
+                                                width: val
+                                            }}/>
+                                        </div>
+                                    </div>
+                                ))}
+                                <div className="p-3 rounded-xl text-xs" style={{background:"var(--forest-faint)", marginTop: "16px"}}>
+                                    <div className="font-medium mb-0.5" style={{color:"var(--forest)"}}>Ready for Tuesday's
+                                        session
+                                    </div>
+                                    <div style={{color:"var(--muted)", padding: "12px", background: "#eff6ff", borderRadius: 12,}}>Fibre shortfall — avg 18g/day vs 30g target. No food
+                                        diary needed.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     {/* Fade */}
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#f9f5ec] to-transparent" />
+                    <div
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#f9f5ec] to-transparent"/>
                 </div>
             </div>
         </section>

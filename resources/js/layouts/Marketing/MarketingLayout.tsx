@@ -1,19 +1,8 @@
 import React, {Component, ReactNode, useEffect, useState} from 'react';
 import useScrollReveal from "@/hooks/useScrollReveal";
 import MarketingNavbar from "@/layouts/Marketing/MarketingNavbar";
-import Hero from "@/layouts/Marketing/Hero";
-import Stats from "@/layouts/Marketing/Stats";
-import ProblemSection from "@/layouts/Marketing/ProblemSection";
-import Features from "@/layouts/Marketing/Features";
-import HowItWorks from "@/layouts/Marketing/HowItWorks";
-import Technology from "@/layouts/Marketing/Technology";
-import Comparison from "@/layouts/Marketing/Comparison";
-import FAQ from "@/layouts/Marketing/FAQ";
 import MarketingFooter from "@/layouts/Marketing/Footer";
-import FinalCTA from "@/layouts/Marketing/FinalCTA";
-import ForPractitioners from "@/layouts/Marketing/ForPractioners";
 import MarketingModal from "@/components/Modal/MarketingModal";
-import {usePage} from "@inertiajs/react";
 
 
 

@@ -106,9 +106,9 @@ class MealRecommendationService
         Collection          $rules,
         array               $options
     ): string {
-        $conditions   = implode(', ', $profile->conditions ?? []);
-        $allergies    = implode(', ', $profile->allergies ?? []);
-        $intolerances = implode(', ', $profile->intolerances ?? []);
+        $conditions   = implode(', ', json_decode(is_null($profile->conditions) ? "" : $profile->conditions) ?? []);
+        $allergies    = implode(', ', json_decode(is_null($profile->allergies) ? "" : $profile->allergies) ?? []);
+        $intolerances = implode(', ', json_decode(is_null($profile->intolerances) ? "" : $profile->intolerances) ?? []);
         $cuisines     = implode(', ', $options['cuisine_preferences'] ?? []);
         $mealsPerDay  = $options['meals_per_day']  ?? 3;
         $maxCookMins  = $options['max_cooking_minutes'] ?? 40;
@@ -275,7 +275,7 @@ PROMPT;
             }
 
             // Bonus for cuisine preference match
-            foreach ($profile->cuisine_preferences ?? [] as $cuisine) {
+            foreach (json_decode($profile->cuisine_preferences) ?? [] as $cuisine) {
                 if (stripos(($meal['description'] ?? '') . ' ' . ($meal['name'] ?? ''), $cuisine) !== false) {
                     $score += 5.0;
                 }

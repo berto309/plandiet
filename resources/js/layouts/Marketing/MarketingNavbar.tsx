@@ -18,7 +18,6 @@ export default function Navbar({ onAuth }: MarketingNavbarProp) {
         { href: "#features", label: "Features" },
         { href: "#how-it-works", label: "How it works" },
         { href: "#for-practitioners", label: "For practitioners" },
-        { href: "#technology", label: "Technology" },
         { href: "#faq", label: "FAQ" },
     ];
 

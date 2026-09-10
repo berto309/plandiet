@@ -7,31 +7,15 @@ export default function ForPractioners() {
                 <div className="sr" style={{ textAlign: "center", maxWidth: 768, margin: "0 auto 4rem" }}>
                     <div className="overline-text" style={{ color: C.forest, marginBottom: "1rem" }}>For dietitians & nutritionists</div>
                     <h2 className="section-xl display" style={{ color: C.charcoal, marginBottom: "1.25rem" }}>
-                        Designed around your <em style={{ fontStyle: "italic", color: C.forest }}>clinical authority</em>
+                         <em style={{ fontStyle: "italic", color: C.forest }}>Evidence-based templates</em> for the conditions you treat
                     </h2>
-                    <p style={{ fontSize: "clamp(1.05rem,1.5vw,1.25rem)", lineHeight: 1.75, fontWeight: 300, color: C.muted }}>PlanDiet doesn't replace your clinical judgement. It makes your expertise available to every client, every day, between every appointment.</p>
+                    <p style={{ fontSize: "clamp(1.05rem,1.5vw,1.25rem)", lineHeight: 1.75, fontWeight: 300, color: C.muted }}>
+                        Each template is built from NICE, ADA, NHS, or specialist guidelines. Load the template as a starting point, then adjust values to the specific clinical picture in front of you. The constraint values are yours to set — the template just gets you there faster.
+                    </p>
                 </div>
 
-                <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 items-start gap-10">
-                    <div className="sr-l" style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                        {[
-                            ["⚖️", "You set the rules. The AI follows them.", "Every clinical constraint — calorie targets, nutrient limits, allergen exclusions — is set exclusively by you. The AI generates creative options within those boundaries."],
-                            ["📋", "Between-appointment compliance, automatically", "Weekly compliance reports are generated without asking your clients to do anything extra. Average sodium, fibre targets, carb adherence, meal ratings — all ready before your next session."],
-                            ["🔬", "Test before you publish any rule change", "The sandbox lets you test any constraint against a client's real profile before it goes live. See exactly which meals pass or fail under the new rule."],
-                            ["📜", "Full audit trail for every change", "Every rule update logged: who, when, previous value, new value, reason. Supports regulatory accountability and patient safety reviews."],
-                        ].map(([icon, title, body]) => (
-                            <div key={title} className="card-hover" style={{ padding: "1.5rem", borderRadius: "1rem", border: "1px solid rgba(31,94,31,.08)", background: "white", display: "flex", gap: 16 }}>
-                                <div style={{ width: 40, height: 40, borderRadius: 12, background: C.forestFaint, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{icon}</div>
-                                <div><h3 style={{ fontWeight: 600, color: C.charcoal, marginBottom: 8 }}>{title}</h3><p style={{ fontSize: ".875rem", lineHeight: 1.7, fontWeight: 300, color: C.muted }}>{body}</p></div>
-                            </div>
-                        ))}
-                    </div>
-
+                <div className="mb-16 grid grid-cols-1  items-start gap-10">
                     <div className="sr-r">
-                        <div style={{ marginBottom: "1.5rem" }}>
-                            <div className="overline-text" style={{ color: C.forest, marginBottom: "0.75rem" }}>Supported clinical conditions</div>
-                            <p style={{ fontSize: ".875rem", lineHeight: 1.7, fontWeight: 300, color: C.muted }}>Evidence-referenced templates ready to apply, with NHS source links for every constraint value.</p>
-                        </div>
                         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: "1.5rem" }}>
                             {[
                                 ["🩸", "Type 2 Diabetes", "ADA 2024 · NHS · Diabetes UK"],
@@ -48,15 +32,12 @@ export default function ForPractioners() {
                                 </div>
                             ))}
                         </div>
-                        <div style={{ padding: 20, borderRadius: "1rem", background: C.forestFaint, border: `1px solid ${C.forestPale}`, textAlign: "center" }}>
-                            <div style={{ fontSize: ".875rem", fontWeight: 600, color: C.forest, marginBottom: 4 }}>Custom conditions</div>
-                            <p style={{ fontSize: ".75rem", fontWeight: 300, color: C.muted }}>Don't see your clinical area? The rule editor supports any nutrient constraint. Build custom templates for PCOS, coeliac disease, eating disorder recovery, and more.</p>
-                        </div>
+
                     </div>
                 </div>
 
                 {/* Testimonials */}
-                <div className="sr">
+                <div className="sr" style={{marginTop: "24px"}}>
                     <div className="overline-text" style={{ color: C.forest, marginBottom: "1.5rem", textAlign: "center" }}>Practitioner voices</div>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                         {[

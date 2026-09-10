@@ -108,7 +108,7 @@ const SandboxPage = () => {
                                             className="w-full border border-sage-200 rounded-xl px-3 py-2.5 text-sm bg-cream text-sage-800" required>
                                         <option value="">Select</option>
                                         {practitionerClientsList.map((pcl: any) => (
-                                            <option key={pcl.user.id} value={pcl.user.id}>{pcl.user.name} {pcl.user.client_health_profile?.conditions?.length > 0 ?  `-` : ''}  {pcl.user.client_health_profile.conditions?.join(' · ') }</option>
+                                            <option key={pcl.user.id} value={pcl.user.id}>{pcl.user.name} {pcl.user.client_health_profile?.conditions?.length > 0 ?  `-` : ''}  {pcl.user.client_health_profile?.conditions?.length > 0 ? JSON.parse(pcl.user.client_health_profile?.conditions).join(' · ') : ' '}</option>
                                         ))}
                                     </select>
                                 </div>

@@ -19,7 +19,7 @@ import {Head} from "@inertiajs/react";
 
 
 export default function Welcome() {
-    <Head title="Clinical nutrition,intelligently personalised" />
+    <Head title="Your clinical rules,Every client's daily meals" />
 
     const [authModal, setAuthModal] = useState<string | undefined>(undefined);
     const [showStt, setShowStt] = useState(false);
@@ -44,8 +44,6 @@ export default function Welcome() {
             <Features />
             <HowItWorks />
             <ForPractitioners />
-            <Technology />
-            <Comparison />
             <FAQ />
             <FinalCTA onAuth={(tab) => setAuthModal(tab)} />
             <MarketingFooter />

@@ -19,7 +19,7 @@ export default function MarketingFooter() {
                 <div className="mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-8">
                     <div>
                         <div className="display" style={{ fontSize: "1.25rem", marginBottom: 8, fontWeight: 500, color: "rgba(134,239,172,.7)" }}>PlanDiet</div>
-                        <p style={{ fontSize: ".75rem", fontWeight: 300, lineHeight: 1.6, color: "rgba(255,255,255,.25)" }}>AI-powered clinical nutrition. HCPC-verified practitioners. Neurosymbolic safety.</p>
+                        <p style={{ fontSize: ".75rem", fontWeight: 300, lineHeight: 1.6, color: "rgba(255,255,255,.25)" }}>Your clinical rules, every client's daily meals</p>
                     </div>
                     {rows.map(([heading, items]) => (
                         <div key={heading}>

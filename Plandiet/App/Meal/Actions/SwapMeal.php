@@ -21,7 +21,7 @@ final class SwapMeal
 
         $result = app(MealRecommendationService::class)->generatePlan($profile, $rules, [
             'target_slot'        => $item->meal_type->value,
-            'cuisine_preferences'=> $profile->cuisine_preferences ?? [],
+            'cuisine_preferences'=> json_decode($profile->cuisine_preferences) ?? [],
             'max_cooking_minutes'=> $profile->max_cooking_minutes,
             'meals_per_day'      =>  1,
         ]);

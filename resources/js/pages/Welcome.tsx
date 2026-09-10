@@ -41,7 +41,6 @@ export default function Welcome() {
             <Hero onAuth={(tab) => setAuthModal(tab)} />
             <Stats />
             <ProblemSection />
-            <Features />
             <HowItWorks />
             <ForPractitioners />
             <FAQ />

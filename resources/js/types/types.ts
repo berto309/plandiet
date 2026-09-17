@@ -588,8 +588,8 @@ export interface ConflictEntry {
     level: ConflictLevel;
     type: string;
     message: string;
-    incomingRule: { nutrient_key: string; operator: Operator; value?: number; priority: Priority };
-    conflictingRule: { id: number; nutrient_key: string; operator: Operator; value?: number; priority: Priority; label?: string };
+    incoming_rule: { nutrient_key: string; operator: Operator; value?: number; priority: Priority };
+    conflicting_rule: { id: number; nutrient: string; operator: Operator; value?: number; priority: Priority; label?: string };
     detail?: { lower_bound?: number; upper_bound?: number; window?: number; typical_range_pct?: number };
 }
 

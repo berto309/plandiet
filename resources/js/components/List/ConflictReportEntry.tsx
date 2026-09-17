@@ -43,16 +43,16 @@ const ConflictReportEntry = ({ entry, defaultOpen = false }: { entry: ConflictEn
                     <div className="grid grid-cols-[1fr_auto_1fr] gap-2 items-center">
                         <RulePill
                             label="Incoming rule"
-                            value={`${entry.incomingRule.nutrient_key} ${formatOp(entry.incomingRule.operator, entry.incomingRule.value)}`}
-                            sub={`${entry.incomingRule.priority} priority`}
+                            value={`${entry.incoming_rule.nutrient}  ${formatOp(entry.incoming_rule.operator, entry.incoming_rule.value)}`}
+                            sub={`${entry.incoming_rule.priority} priority`}
                         />
                         <div className="text-xs font-medium text-gray-400 text-center px-1">
                             {entry.level === "hard" ? "✕" : "vs"}
                         </div>
                         <RulePill
                             label="Conflicting rule"
-                            value={`${entry.conflictingRule.nutrient_key} ${formatOp(entry.conflictingRule.operator, entry.conflictingRule.value)}`}
-                            sub={entry.conflictingRule.label ? `${entry.conflictingRule.priority} · ${entry.conflictingRule.label}` : entry.conflictingRule.priority}
+                            value={`${entry.conflicting_rule.nutrient} ${formatOp(entry.conflicting_rule.operator, entry.conflicting_rule.value)}`}
+                            sub={entry.conflicting_rule.label ? `${entry.conflicting_rule.priority} · ${entry.conflicting_rule.label}` : entry.conflicting_rule.priority}
                         />
                     </div>
 

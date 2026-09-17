@@ -809,7 +809,7 @@ class ClientSeeder extends Seeder
                 ],
                 'practitioner_id' => $sarahId,
                 'health_profile' => [
-                    'conditions' => json_encode(['ibs']), 'allergies' => null,
+                    'conditions' => json_encode(['coeliac disease']), 'allergies' => null,
                     'intolerances' => json_encode(['lactose', 'gluten']), 'primary_goal' => 'symptom_management',
                     'height_cm' => 165.0, 'weight_kg' => 60.0, 'activity_level' => 3,
                     'target_calories' => 1700, 'target_protein_g' => 85, 'target_carbs_g' => 195,

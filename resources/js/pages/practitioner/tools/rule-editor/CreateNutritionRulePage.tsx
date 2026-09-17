@@ -134,7 +134,7 @@ const CreateNutritionRulePage = () => {
                             <select value={data.client_id}  onChange={(e) => setData('client_id', e.target.value)} id="client" className="w-full rounded-lg border border-stone-300 bg-stone-50 px-3.5 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-emerald-600 focus:bg-white focus:ring-2 focus:ring-emerald-600/20" required>
                                 <option value="">Select</option>
                                 {practitionerClientsList.map((cl: any) => (
-                                    <option key={cl.user.id} value={cl.user.id}>{cl.user.name} {cl.user.client_health_profile?.conditions?.length > 0 ?  `-` : ''}   { cl.user.client_health_profile.conditions?.join(' · ') }</option>
+                                    <option key={cl.user.id} value={cl.user.id}>{cl.user.name} {cl.user.client_health_profile?.conditions?.length > 0 ?  `-` : ''}  {cl.user.client_health_profile?.conditions?.length > 0 ? JSON.parse(cl.user.client_health_profile?.conditions).join(' · ') : ' '}</option>
                                 ))}
                             </select>
                             <Error message={errors.client_id} />

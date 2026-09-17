@@ -73,7 +73,7 @@ const ConflictReportCard = ({conflictReport} : {conflictReport: ConflictReport|n
                 {/* Conflict cards */}
                 <div className="space-y-2">
                     {visible.map((entry, i) => (
-                        <ConflictReportEntry key={entry.id} entry={entry} defaultOpen={i === 0 && entry.level === ConflictLevelEnum.HARD} />
+                        <ConflictReportEntry key={i} entry={entry} defaultOpen={i === 0 && entry.level === ConflictLevelEnum.HARD} />
                     ))}
                 </div>
 
